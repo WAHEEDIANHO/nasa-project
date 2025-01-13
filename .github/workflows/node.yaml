@@ -1,0 +1,19 @@
+#CI name
+name: Nasa project CI
+#Event
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+#Jobs
+jobs:
+  build: 
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build --prefix client
